@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html 
+lang="en"
+data-ws-project="67827187-457c-469c-b5a6-1530bceb0cab"
+data-ws-last-published="2025-04-23T06:36:31.761Z"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://criticalbankbackend-4a0be9a2198b.herokuapp.com/ http://localhost http://localhost:4000 http://127.0.0.1;"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <script type="module" src="./renderer.js" defer></script>
+    <title>Optimal Bank</title>
+    
+
+    <Body>
+      <div class="PageWrapper">
+    
+        <nav class="Header">
+          <div class="Wrapper">
+            <div class="logoDiv">
+              <a class="LogoNameLink" href="#"><p>Optimal Bank</p></a>
+              <img class="navStar" src="assets/navStar.png" alt="starImage">
+              <a class="logoLink" href="#">
+                <img src="assets/logo.png" alt="logoImage" class="logoImage">
+              </a>
+            </div>
+            <div class="LoginDiv">
+              <div class="CTAs">
+                <div class="Box to-login" >
+                  <a href="#" class="signInNavLink">Sign in</a>
+                </div>
+              </div>
+              <p>Already have an account?</p>
+            </div>
+          </div>
+        </nav>
+  <div class="Main">
+  <!-- HERO SECTION================================================================ -->
+  <div class="SectionHero allPages" id="hero-section">
+    <div class="Container">
+      <div class="HeaderContent">
+        <a class="eyebrow" href="#">
+          <p class="badge">NEW</p>
+          <p class="Text">Optimal Bank</p>
+          
+         </a> 
+        
+        <h1 class="Heading">
+          <span class="solidWhite">Bank smart</span><br />
+          <span class="gradientText">Stay fully secured</span>
+        </h1>
+        
+        <p class="headingPara">
+          We protect and monitor every transaction, stopping threat before they happen
+        </p>
+        <div class="SigninOuterline to-signup">
+          <a href="#">Sign up</a>
+        </div>
+      </div>
+      <div class="heroImage">
+        <img src="assets/heroImg.png" alt="DarshboardImage">
+      </div>
+    </div>
+  </div>  
+<!-- SIGN UP SECTION ================================================================================== -->
+<!-- SIGN UP SECTION ================================================================================== -->
+<!-- SIGN UP SECTION ================================================================================== -->
+
+
+   <section class="signup-wrapper allPages" id="signup-section">
+    <div class="signup-left">
+      <img src="assets/" alt="Background" class="bg-image" />
+      <div class="left-content">
+        <div class="brand">
+          <img src="assets/logo.png" alt="Icon" class="brand-icon" />
+          <span>Optimal Bank</span>
+        </div>
+        <h2>Get Started with Us</h2>
+        <p>Complete these easy steps to register your account.</p>
+        <div class="steps">
+          <div class="step active">
+            <img src="assets/1.png" alt="Step 1" />
+            <span>Sign up your account</span>
+          </div>
+          <div class="step">
+            <img src="assets/2.png" alt="Step 2" />
+            <span>Set up your account</span>
+          </div>
+          <div class="step">
+            <img src="assets/3.png" alt="Step 3" />
+            <span>Sign up your account</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="signup-right">
+      <h2>Sign Up Account</h2>
+      <p>Complete these easy steps to register your account.</p>
+      <!-- SignUp form======================================-->
+      <form id="signupForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName" class="labelColor">First Name</label>
+            <input id="firstName" name="firstName" type="text" placeholder="e.g. John" />
+          </div>
+          <div class="form-group">
+            <label for="lastName" class="labelColor">Last Name</label>
+            <input id="lastName" name="lastName" type="text" placeholder="e.g. Francisco" />
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="email" class="labelColor">Email Address</label>
+          <input id="email" name="email" type="email" placeholder="e.g. johnfrance@gmail.com" />
+        </div>
+      
+        <div class="form-group">
+          <label for="password" class="labelColor">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter your password" />
+        </div>
+
+        <div class="form-group">
+          <label for="role" class="labelColor">Register as</label>
+          <select id="role" name="role">
+            <option value="user">User</option>
+            <option value="staff">Staff</option>
+          </select>
+        </div>
+      
+        <small>Must be at least 8 characters.</small>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p class="login-link" class="to-login">
+        Already have an account? <a href="#" class="to-login">Log in</a>
+      </p>
+    </div>
+  </section>
+
+
+ <!-- Sign in Section=========================================================================== -->
+<section class="signin-wrapper allPages" id="login-section">
+  <!-- LEFT SIDE -->
+  <div class="signin-left">
+    <img src="assets/SectionBackgroundImg.svg" alt="Background" class="signin-bg-image" />
+    <div class="signin-left-content">
+      <div class="signin-brand">
+        <img src="assets/logo.png" alt="Icon" class="signin-brand-icon" />
+        <span>Optimal Bank</span>
+      </div>
+      <h2>Welcome Back</h2>
+      <p>Log in to continue to your dashboard.</p>
+
+      <div class="signin-steps">
+        <div class="signin-step active">
+          <img src="assets/1.png" alt="Step 1" />
+          <span>Secure Login</span>
+        </div>
+        <div class="signin-step">
+          <img src="assets/2.png" alt="Step 2" />
+          <span>Two-Step Verification</span>
+        </div>
+        <div class="signin-step">
+          <img src="assets/3.png" alt="Step 3" />
+          <span>Access Dashboard</span>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- RIGHT SIDE=============================================================================================== -->
+  <div class="signin-right">
+    <h2>Login to Your Account</h2>
+    <p>Welcome back! Please enter your credentials below.</p>
+
+    <form class="signin-form" id="signinForm">
+      <div class="signin-form-group">
+        <label for="signin-email">Email Address</label>
+        <input id="signin-email" type="email" placeholder="e.g. you@example.com" />
+      </div>
+
+      <div class="signin-form-group">
+        <label for="signin-password">Password</label>
+        <input id="signin-password" type="password" placeholder="Enter your password" />
+      </div>
+
+      <small class="signin-small">
+        Forgot your password? <a id="resetPass" href="#">Reset it</a>
+      </small>
+
+      <button class="signin-submit" type="submit">Sign In</button>
+    </form>
+    <p class="signin-login-link">
+      Don’t have an account? <a href="#" class="to-signup">Sign up</a>
+    </p>
+  </div>
+</section>
+
+<!-- USER DASHBOARD=================================================================================================== -->
+<!-- USER DASHBOARD SECTION -->
+<!-- <section class="dashboard-wrapper">
+  <div class="dashboard-sidebar">
+    <div class="user-profile">
+      <img src="assets/logo.png" alt="User Avatar" class="user-avatar" />
+      <h3 class="user-name">Welcome, John</h3>
+    </div>
+    <nav class="dashboard-nav">
+      <a href="#" class="dashboard-link active">Dashboard</a>
+      <a href="#" class="dashboard-link">Transactions</a>
+      <a href="#" class="dashboard-link">Settings</a>
+      <a href="#" class="dashboard-link logout">Logout</a>
+    </nav>
+  </div>
+
+  <div class="dashboard-main">
+    <div class="account-balance-box">
+      <h2 class="balance-label">Account Balance</h2>
+      <p class="balance-amount">$12,340.00</p>
+    </div>
+
+    <div class="transactions-box">
+      <h2 class="transactions-heading">Recent Transactions</h2>
+      <table class="transactions-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025-04-25</td>
+            <td>ATM Withdrawal</td>
+            <td>-$100.00</td>
+            <td class="status failed">Failed</td>
+          </tr>
+          <tr>
+            <td>2025-04-24</td>
+            <td>Transfer from Jane</td>
+            <td>+$500.00</td>
+            <td class="status success">Completed</td>
+          </tr>
+          <tr>
+            <td>2025-04-22</td>
+            <td>Electricity Bill</td>
+            <td>-$75.50</td>
+            <td class="status pending">Pending</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section> -->
+
+<!-- USER DASHBOARD=================================================================================================== -->
+ <!-- <section class="userDashWrapper">
+ 
+  <div class="layout-container">
+  
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="logo.png" alt="Logo" />
+      </div>
+      <nav class="nav-links">
+        <a href="#"><img src="icon1.svg" alt="Dashboard" /></a>
+        <a href="#"><img src="icon2.svg" alt="Transactions" /></a>
+        <a href="#"><img src="icon3.svg" alt="Settings" /></a>
+      </nav>
+    </aside>
+  
+    <div class="content-area"> -->
+      <!-- Blank content area -->
+     
+        <!-- <div class="transactions-card">
+          <div class="transactions-header">
+            <h3>Transactions</h3>
+            <div class="options-icon">
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+          <ul class="transaction-list">
+            <li class="transaction-item">
+              <div class="icon-wrapper red">
+                <span>↑</span>
+              </div>
+              <div class="transaction-details">
+                <strong>Starbucks New York LLP</strong>
+                <span class="date">12.01.2020 09:34</span>
+              </div>
+              <div class="amount red">-$5,30</div>
+            </li>
+            <li class="transaction-item">
+              <div class="icon-wrapper red">
+                <span>↑</span>
+              </div>
+              <div class="transaction-details">
+                <strong>Wallmart Marketplace</strong>
+                <span class="date">11.01.2020 21:34</span>
+              </div>
+              <div class="amount red">-$135</div>
+            </li>
+            <li class="transaction-item">
+              <div class="icon-wrapper green">
+                <span>↓</span>
+              </div>
+              <div class="transaction-details">
+                <strong>From Catherine Pierce</strong>
+                <span class="date">11.01.2020 18:08</span>
+              </div>
+              <div class="amount green">+$250</div>
+            </li>
+          </ul>
+        </div> -->
+       
+       <!-- Transaction component -->
+    
+        <!-- <div class="transactions-card">
+          <div class="transactions-header">
+            <h3>Transactions</h3>
+            <div class="options-icon">
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+          <ul class="transaction-list">
+            <li class="transaction-item">
+              <div class="icon-wrapper red">
+                <span>↑</span>
+              </div>
+              <div class="transaction-details">
+                <strong>Starbucks New York LLP</strong>
+                <span class="date">12.01.2020 09:34</span>
+              </div>
+              <div class="amount red">-$5,30</div>
+            </li>
+            <li class="transaction-item">
+              <div class="icon-wrapper red">
+                <span>↑</span>
+              </div>
+              <div class="transaction-details">
+                <strong>Wallmart Marketplace</strong>
+                <span class="date">11.01.2020 21:34</span>
+              </div>
+              <div class="amount red">-$135</div>
+            </li>
+            <li class="transaction-item">
+              <div class="icon-wrapper green">
+                <span>↓</span>
+              </div>
+              <div class="transaction-details">
+                <strong>From Catherine Pierce</strong>
+                <span class="date">11.01.2020 18:08</span>
+              </div>
+              <div class="amount green">+$250</div>
+            </li>
+          </ul>
+        </div> -->
+        
+     
+      <!-- 2 column 3rd row==================================================== -->
+      <!-- <div class="quick-transfer-card">
+        <h3>Quick Transfer</h3>
+      
+        <div class="avatars-row">
+          <img src="avatar1.jpg" class="avatar" alt="User 1" />
+          <img src="avatar2.jpg" class="avatar" alt="User 2" />
+          <img src="avatar3.jpg" class="avatar" alt="User 3" />
+          <img src="avatar4.jpg" class="avatar" alt="User 4" />
+          <img src="avatar5.jpg" class="avatar" alt="User 5" />
+          <img src="avatar6.jpg" class="avatar" alt="User 6" />
+          <div class="avatar add-avatar">
+            <span>+</span>
+          </div>
+        </div>
+      
+        <div class="card-input">
+          <input type="text" value="9876 8774 5443 0000 1289" readonly />
+          <img src="mastercard.png" alt="Mastercard" class="card-logo" />
+        </div>
+      
+        <div class="buttons-row">
+          <button class="btn outline">Save as draft</button>
+          <button class="btn primary">Send money</button>
+        </div>
+      </div>
+      
+      
+      
+    </div>
+    <div class="transferArea"> -->
+      <!-- CASH BACK COMPONENET -->
+        <!-- <div class="cashback-card">
+          <div class="cashback-content">
+            <div class="text-block">
+              <h2>Cashback up tp 60% <span class="emoji">🎁</span></h2>
+              <p>
+                Redesign concept for online bank mBank. This is online service that
+                allows.
+              </p>
+              <button class="active-btn">Active</button>
+            </div>
+            <div class="image-block">
+              <img src="woman-holding-card.png" alt="Happy woman with card" class="promo-img" />
+            </div>
+          </div>
+        </div> -->
+        
+     <!-- transArea Secong row parent==================================================== -->
+      <!-- <div class="transArea">
+        <div class="transfer-card">
+          <div class="transfer-header">
+            <div class="icon-box">
+              <img src="paper-plane-icon.png" alt="Transfer Icon">
+              <h2>Transfer</h2>
+            </div>
+            
+            <div class="menu-dots">•••</div>
+          </div>
+        
+          <div class="card-inputSrow-box"> -->
+            <!-- <div class="transinputImg">
+              <input type="text" class="card-inputSrow" value="9876 8774 5443 0000 1289" />
+              <img src="mastercard-logo.png" alt="Mastercard" class="card-logo">
+            </div> -->
+            <!-- <div class="card-input transInpoot">
+              <input type="text" value="9876 8774 5443 0000 1289" readonly />
+              <img src="mastercard.png" alt="Mastercard" class="card-logo" />
+            </div>
+            <button class="send-btn">
+              <img src="arrow-icon.png" alt="Send">
+            </button>
+          </div>
+        
+          <p class="card-note">Visa or MasterCard of any Poland Bank</p>
+        </div> -->
+
+        <!-- =====================Exchange component -->
+        <!-- <div class="exchange-box">
+          <div class="exchange-header">
+            <div class="exchange-icon-title">
+              <img src="conversion-icon.png" alt="Convert" class="exchange-logo" />
+              <span class="exchange-title">Conversion</span>
+            </div>
+            <div class="menu-dots">•••</div>
+          </div>
+        
+          <div class="exchange-main">
+            <div class="currency-field">
+              <select class="currency-select">
+                <option>PLN</option>
+              </select>
+              <input type="text" class="currency-input" value="5100" />
+            </div>
+        
+            <div class="swap-btn">
+              <img src="swap-icon.png" alt="Swap" />
+            </div>
+        
+            <div class="currency-field">
+              <select class="currency-select">
+                <option>USD</option>
+              </select>
+              <input type="text" class="currency-input" value="1000" />
+            </div>
+          </div>
+        
+          <p class="exchange-rate">
+            <strong>Rate = 5.01</strong> <span class="rate-meta">(Jun 21, 13:99 UTC)</span>
+          </p>
+        </div>
+        
+
+      </div>
+      <div class="transactions-card">
+        <div class="transactions-header">
+          <h3>Transactions</h3>
+          <div class="options-icon">
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <ul class="transaction-list">
+          <li class="transaction-item">
+            <div class="icon-wrapper red">
+              <span>↑</span>
+            </div>
+            <div class="transaction-details">
+              <strong>Starbucks New York LLP</strong>
+              <span class="date">12.01.2020 09:34</span>
+            </div>
+            <div class="amount red">-$5,30</div>
+          </li>
+          <li class="transaction-item">
+            <div class="icon-wrapper red">
+              <span>↑</span>
+            </div>
+            <div class="transaction-details">
+              <strong>Wallmart Marketplace</strong>
+              <span class="date">11.01.2020 21:34</span>
+            </div>
+            <div class="amount red">-$135</div>
+          </li>
+          <li class="transaction-item">
+            <div class="icon-wrapper green">
+              <span>↓</span>
+            </div>
+            <div class="transaction-details">
+              <strong>From Catherine Pierce</strong>
+              <span class="date">11.01.2020 18:08</span>
+            </div>
+            <div class="amount green">+$250</div>
+          </li>
+        </ul>
+      </div>
+  
+    </div>
+  </div>
+ </section> -->
+
+<!-- <section class="dashboard-wrapper"> -->
+  <!-- Sidebar -->
+  <!-- <aside class="sidebar">
+    <div class="user-info">
+      <div class="avatar">J</div>
+      <span class="username">John Doe</span>
+    </div>
+    <nav class="nav-menu">
+      <a href="#" class="nav-item active">Account</a>
+      <a href="#" class="nav-item">Preferences</a>
+      <a href="#" class="nav-item">Transactions</a>
+      <a href="#" class="nav-item">Account Balance</a>
+    </nav>
+  </aside> -->
+
+  <!-- Main Content -->
+  <!-- <div class="main-content">
+    <h2>Account</h2>
+    <div class="tabs">
+      <button class="tab active">Account Settings</button>
+      <button class="tab">Cards</button>
+      <button class="tab">Transactions</button>
+    </div>
+
+    <div class="account-info">
+      <div class="profile-section">
+        <div class="avatar-large">JD</div>
+        <div>
+          <h3>John Doe</h3>
+          <p>john.doe@example.com</p>
+        </div>
+        <div class="image-buttons">
+          <button class="btn-change">Change Image</button>
+          <button class="btn-delete">Delete Image</button>
+        </div>
+      </div>
+
+      <form class="account-form">
+        <div class="form-group">
+          <label>Street Address</label>
+          <input type="text" placeholder="1234 Optimal Street, DreamCity" />
+        </div>
+        <div class="form-group">
+          <label>Floor / Suite / Office</label>
+          <input type="text" placeholder="Apartment 4B" />
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" placeholder="Optimal City" />
+        </div>
+        <div class="form-group">
+          <label>State</label>
+          <input type="text" placeholder="DreamState" />
+        </div>
+        <div class="form-group">
+          <label>ZIP Code</label>
+          <input type="text" placeholder="12345" />
+        </div>
+      </form>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- STAFF DASHBOARD=================================================================================================== -->
+<section class="UserDashboard-wrapper allPages" id="dashboard-wrapperUser">
+  
+  <h1>USER DASHBOARD HEOOO</h1>
+</section>
+<!-- USER DASHBOARD=================================================================================================== -->
+
+
+<!-- STAFF DASHBOARD=================================================================================================== -->
+<section class="staffDashboard-wrapper allPages" id="dashboard-wrapperStaff">
+  
+  <h1>STAFF DASHBOARD HEOOO</h1>
+</section>
+
+<!-- PASSWORD RECOVERY PAGE===================================================================================== -->
+ <section class="SectionEmailAuth" id="VerifyEmailrecovPage">
+  <div class="EmailAuthContainerAuth">
+    <div class="HeaderContentAuth">
+      <div class="EyebrowAuth">
+        <p class="BagdeAuth">NEW</p>
+        <p class="TextBadgeAuth">Optimal Bank</p>
+      </div>
+      <h1 class="HeadingAuth">
+        <span class="solidWhite">Bank smart</span><br>
+        <span class="gradientText">Stay fully secured</span>
+      </h1>
+      <p class="pAuth">
+        Please enter your email to continue.
+      </p>
+      <!-- <input type="text" class="emailAuthInput" name="email" placeholder="email@company.com" required>
+      <input type="text" class="oTpAuthInput"  name="OTP" placeholder="OTP" required>
+      <input type="text" class="newPasswordAuthInput" placeholder="new password" required>
+      <div class="ContinueDivBut">
+        <a href=""></a> -->
+
+    <form class="signin-form PassRecovForm"  id="RecoveForm">
+      <input type="text" id = "RecoveInput" class="emailAuthInput" name="email" placeholder="email@company.com" required>
+      <!-- <input type="text" class="oTpAuthInput"  name="OTP" placeholder="OTP" required>
+      <input type="text" class="newPasswordAuthInput" placeholder="new password" required> -->
+
+      <button class="AuthContinue-submit" type="submit">Continue</button>
+    </form>
+      </div>
+    </div>
+ </section>
+
+ <!-- OPT PAGE======================================================================================= -->
+ <!-- OPT PAGE======================================================================================= -->
+ <!-- OPT PAGE======================================================================================= -->
+ <!-- OPT PAGE======================================================================================= -->
+
+<section class="SectionEmailAuth" id="OtpPage">
+  <div class="EmailAuthContainerAuth">
+    <div class="HeaderContentAuth">
+      <div class="EyebrowAuth">
+        <p class="BagdeAuth">NEW</p>
+        <p class="TextBadgeAuth">Optimal Bank</p>
+      </div>
+      <h1 class="HeadingAuth">
+        <span class="solidWhite">Bank smart</span><br>
+        <span class="gradientText">Stay fully secured</span>
+      </h1>
+      <p class="pAuth">
+        Please enter your email, password and the OTP sent to your mail to continue.<br> 
+        We protect every step of your journey, ensuring your<br>
+        information stays secured.
+      </p>
+      <!-- <input type="text" class="emailAuthInput" name="email" placeholder="email@company.com" required>
+      <input type="text" class="oTpAuthInput"  name="OTP" placeholder="OTP" required>
+      <input type="text" class="newPasswordAuthInput" placeholder="new password" required>
+      <div class="ContinueDivBut">
+        <a href=""></a> -->
+
+    <form class="signin-form PassRecovForm"  id="OtpVerifyForm">
+      <input type="text" class="emailAuthInput" id="OtpEmailInput" name="email" placeholder="email@company.com" required>
+      <input type="password" class="oTpAuthInput"  name="OTP" placeholder="OTP" required id="otpValue">
+      <input type="password" class="newPasswordAuthInput" placeholder="new password" required id="reset-new-password">
+
+      <button class="AuthContinue-submit" type="submit">Continue</button>
+    </form>
+      </div>
+    </div>
+ </section>
+ <!-- OPT PAGE======================================================================================= -->
+ <!-- OPT PAGE======================================================================================= -->
+ <!-- OPT PAGE======================================================================================= -->
+ <!-- OPT PAGE======================================================================================= -->
+
+
+
+<script src="./pageSwitch.js"></script>
+<!-- <script type="module" src="./signupUser.js"></script> -->
+
+  </Body>
+</html>
