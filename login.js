@@ -1,4 +1,4 @@
-export function loginHandler({ onLoadingChange, onErrorChange, onSuccess }) {
+export function loginHandler({ onLoadingChange, onErrorChange, onSuccess, locked }) {
   let isLoading = false;
   let error = null;
 
@@ -17,6 +17,28 @@ export function loginHandler({ onLoadingChange, onErrorChange, onSuccess }) {
       });
 
       const json = await response.json();
+
+      //Check=========================
+      // ==================================================
+      if(json.lockLoginTimer)
+        {
+            try{
+            locked(json.lockLoginTimer);
+            }
+            catch(error)
+            {
+              console.error("Error in onLock:", error);
+
+            }
+            isLoading = false;
+            error = json.error || 'System is locked. Too many failed login attempts, try again after'+json.loginLockUntil;
+
+            onLoadingChange(isLoading);
+            onErrorChange(error);
+            return;
+        }
+      // ==================================================
+      
 
       if (!response.ok) {
         isLoading = false;

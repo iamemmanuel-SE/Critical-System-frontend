@@ -79,6 +79,10 @@ const { resetPassword } = resetPasswordHandler({
   }
 });
 
+// Get Unlocked=====================================================================
+
+
+//
 // Get Reset details to Handler
 const resetPasswordForm = document.getElementById("OtpVerifyForm");
 
@@ -228,12 +232,43 @@ const { login } = loginHandler({
     if(user.role === 'user'){
       showUserDashBoard();
     }
+   
     
     // Optionally transition to dashboard
     // dashboard.style.display = "flex";
     // document.querySelector(".form_container").style.display = "none";
     // document.querySelector(".home").classList.remove("show");
-  }
+  },
+  locked: (lockLoginTimer => {
+    console.log(lockLoginTimer)
+    const lockTimer = new Date(lockLoginTimer).getTime();
+            const now = new Date().getTime();
+            console.log(lockLoginTimer);
+            console.log(now);
+          
+             if (lockTimer > now) {
+              const signupScreenLockID = document.getElementById("signup-Screen-LockID");
+              const countdownText = document.getElementById("signupTimer");
+                   signupScreenLockID.style.display = "flex";
+
+          
+              const countdownInterval = setInterval(() => {
+                const timeLeft = lockTimer - new Date().getTime();
+                console.log(timeLeft);
+                
+          
+                 if (timeLeft <= 0) {
+                  clearInterval(countdownInterval);
+                  overlay.style.display = "none";
+                  // loginForm.querySelector('button[type="submit"]').disabled = false;
+                } else {
+                  const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
+                  const seconds = Math.floor((timeLeft / 1000) % 60);
+                  countdownText.innerText = `Login temporqarily locked. Please wait ${minutes}m ${seconds}s.`;
+                } 
+              }, 1000);
+            }
+  })
 });
 
 signinForm.addEventListener("submit", (e) => {
