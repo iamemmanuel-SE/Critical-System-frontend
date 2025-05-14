@@ -395,16 +395,28 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
   </form>
 </div>
 
+<!-- Withdraw Money for User=========================================================================== -->
+
 </section>
 <!-- USER DASHBOARD=================================================================================================== -->
 <!-- USER DASHBOARD=================================================================================================== -->
 
 
 
+
+
+
+ 
+
+
+
+
+
+
+
 <!-- STAFF DASHBOARD=================================================================================================== -->
 <!-- STAFF DASHBOARD=================================================================================================== -->
 <!-- STAFF DASHBOARD=================================================================================================== -->
-</section>
 <!-- STAFF DASHBOARD=================================================================================================== -->
 <section class="signup-wrapper allPages" id="dashboard-wrapperStaff">
   <div class="signup-left">
@@ -433,61 +445,56 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
     </div>
   </div>
 
-  <!-- Creat Account Div============================================================== -->
+  <!-- Credit Account Div============================================================== -->
   <div class="signup-right" id="signUpTab">
-    <h2>Create Account</h2>
+    <h2>Credit Account</h2>
     <!-- <p>Complete these easy steps to register your account.</p> -->
 
   
-    <!--Create Account Right Side ================================================================================-->
+    <!--Credit Account Right Side ================================================================================-->
     <form id="AccountForm" class="createAccount">
     
       <div class="form-group">
-        <label for="email" class="labelColor accountDistance">Account Name</label>
-        <input id="email" name="accountName" type="text" placeholder="e.g. Ben3@1" />
+        <label for="email" class="labelColor accountDistance">Account Number</label>
+        <input id="email" name="accountName" type="text" placeholder="00170100034..." />
       </div>
 
       <div class="form-group">
-        <label for="role" class="labelColor accountDistance">Create pin</label>
-        <input id="password" name="pin" type="password number" placeholder="12344..." />
-      </div>
-    
-      <div class="form-group">
-        <label for="password" class="labelColor accountDistance">Id-number</label>
-        <input id="password" name="password" type="text" placeholder="Drivers/Nationality/etc" />
+        <label for="money" class="labelColor accountDistance">Amount</label>
+        <input id="password" name="amount" type="number" placeholder="$34000" />
       </div>
 
-      <div class="form-group">
-        <label for="password" class="labelColor accountDistance">Address</label>
-        <input id="password" name="password" type="text" placeholder="e.g ST3..." />
-      </div>
-
-      <div class="form-group">
-        <label for="password" class="labelColor accountDistance">Tel number</label>
-        <input id="password" name="password" type="number" placeholder="07538287549" />
-      </div>
-    
-      <!-- <small>Must be at least 8 characters.</small> -->
-      <button type="submit">Create</button>
+      <button type="submit">Credit Account</button>
     </form>
-
-      
   </div>
 
-  <!-- Transaction div============================================================================================= -->
-  <div class="signup-right transactionHistoryTab" id="transactionHisTab" >
-    <h2 class="transhead" id="headtrans">Transactions</h2>
+  <!-- View Acounts div============================================================================================= -->
+  <div class="signup-right transactionHistoryTab" id="viewAccountsTab" >
+    <h2 class="transhead" id="accountViewtrans">User Accounts</h2>
     <!-- <p>Complete these easy steps to register your account.</p> -->
 
   
     
-    <form id="transactionForm" class="createAccount TransactionFormDisplay">
+    <form id="ViewAccountForm" class="createAccount TransactionFormDisplay">
     
       <div class="form-group">
-        <div class="transMoney" style="display: flex; flex-direction: row; justify-content: space-between;">
-          <p class="Amount"> - $3000</p>
-          <p class="date">20/4/2023</p>
+        <div class="transMoney" style="display: flex; flex-direction: row; justify-content: space-between;" id="viewAccountHead">
+          <p class="Name">Full name</p>
+          <p class="Name">Email</p>
+          <p class="Name">Tel</p>
+          <p class="Account Number">00232323</p>
+          <p class="Account Number">Address</p>
         </div>
+
+        <!-- <div class="transMoney" style="display: flex; flex-direction: row; justify-content: space-between;">
+          <p class="Name"></p>
+          <p class="Name">Email</p>
+          <p class="Name">Tel</p>
+          <p class="Account Number">00232323</p>
+          <p class="Account Number">Address</p>
+        </div> -->
+
+        
         <!-- <label for="email" class="labelColor accountDistance">Amount</label> -->
       </div>    
       <!-- <small>Must be at least 8 characters.</small> -->
@@ -496,89 +503,29 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
   </div>
 
 
- <!-- Withdraw Money Div=================================================================================================== -->
- <div class="signup-right" id="withdrawTab">
-  <h2>Payments</h2>
+ <!-- Withdraw Money for USER Div=================================================================================================== -->
+ <div class="signup-right" id="creditTab">
+  <h2>Withdraw</h2>
   <!-- <p>Complete these easy steps to register your account.</p> -->
 
 
-  <!--Withdrawal div================================================================================-->
-  <form id="WithdForm" class="createAccount withdrawMon">
+  <!--wITHdraw money for Account Form div================================================================================-->
+  <form id="withdrawForUserForm" class="createAccount creditawMon">
   
     <div class="form-group">
       <label for="email" class="labelColor accountDistance">Amount</label>
-      <input id="WithdrawiD" name="WithdrawAmount" type="number" placeholder="$2000" />
+      <input id="withdrawForUser" name="creditAmount" type="number" placeholder="$2000" />
     </div>
 
     <div class="form-group">
-  <label for="account" class="labelColor accountDistance">Account</label>
+  <label for="account" class="labelColor accountDistance">Account number</label>
   <input id="password" name="password" type="text" placeholder="Enter account number ..." />
     </div>
-
-    <div class="form-group">
-      <label for="password" class="labelColor accountDistance">Pin</label>
-      <input id="password" name="password" type="text" placeholder="Enter Pin" />
-    </div>
-  
-    <small class="signin-small">
-      Forgot your pin? <a id="resetPin" href="#">Reset pin</a>
-    </small>
-
     <!-- <small>Must be at least 8 characters.</small> -->
     <button type="submit">Withdraw</button>
   </form>
 
-    
 </div>
-
-<!-- View Account Details DIV ======================================================================================-->
-<div class="signup-right" id="AcountDetails">
-  <h2 class="accountDistance">Account Info</h2>
-
-  <!-- SignUp form======================================-->
-  <form id="viewAccountInForm">
-    <div class="form-row">
-      <div class="form-group">
-        <label for="firstName" class="labelColor">First Name</label>
-        <input id="firstName" name="firstName" type="text" placeholder="e.g. John" readonly/>
-      </div>
-      <div class="form-group">
-        <label for="lastName" class="labelColor">Last Name</label>
-        <input id="lastName" name="lastName" type="text" placeholder="e.g. Francisco" readonly/>
-      </div>
-    </div>
-  
-    <div class="form-group">
-      <label for="email" class="labelColor">Email Address</label>
-      <input id="email" name="email" type="email" placeholder="e.g. johnfrance@gmail.com" readonly/>
-    </div>
-
-
-    <div class="form-group">
-      <label for="password" class="labelColor accountDistance">Id-number</label>
-      <input id="password" name="password" type="text" placeholder="Drivers/Nationality/etc" readonly />
-    </div>
-
-    <div class="form-group">
-      <label for="password" class="labelColor accountDistance">Account Number</label>
-      <input id="password" name="accounNum" type="text" placeholder="Drivers/Nationality/etc" readonly />
-    </div>
-
-    <div class="form-group">
-      <label for="password" class="labelColor accountDistance">Address</label>
-      <input id="password" name="password" type="text" placeholder="e.g ST3..." readonly/>
-    </div>
-
-    <div class="form-group">
-      <label for="password" class="labelColor accountDistance">Tel number</label>
-      <input id="password" name="password" type="number" placeholder="07538287549" readonly/>
-    </div>
-
-   
-
-  </form>
-</div>
-
 </section>
 
 

@@ -18,6 +18,7 @@ const heroSection = document.getElementById("hero-section");
 const userDashBoard = document.getElementById("dashboard-wrapperUser");
 const otpPage = document.getElementById("OtpPage");
 const VerifyEmailrecovPage = document.getElementById('VerifyEmailrecovPage');
+const dashboardWrapperStaff = getElementById('dashboard-wrapperStaff');
 // PAGE SECTION CALLS============================================================
 
 // SHOW DASHBOARD function (this func displays dashboard)===================================
@@ -28,6 +29,7 @@ function showUserDashBoard() {
   if (signupSection) signupSection.style.display = "none";
   if (otpPage) otpPage.style.display = "none";
   if (VerifyEmailrecovPage) VerifyEmailrecovPage.style.display = "none";
+  if (dashboardWrapperStaff) dashboardWrapperStaff.style.display="none"
   
   // if (resetPasswordPage) resetPasswordPage.style.display = "none";
  
@@ -41,6 +43,8 @@ function showLoginSection() {
   if (signupSection) signupSection.style.display = "none";
   if (otpPage) otpPage.style.display = "none";
   if (VerifyEmailrecovPage) VerifyEmailrecovPage.style.display = "none";
+  if (dashboardWrapperStaff) dashboardWrapperStaff.style.display="none"
+
   
  
 }
@@ -52,6 +56,7 @@ function showOtpPage() {
   if (userDashBoard) userDashBoard.style.display = "none";
   if (signupSection) signupSection.style.display = "none";
   if (otpPage) otpPage.style.display = "flex";
+  if (dashboardWrapperStaff) dashboardWrapperStaff.style.display="none"
   if (VerifyEmailrecovPage) VerifyEmailrecovPage.style.display = "none";
   console.log('I AM OTP AND I AM HEER')
 
@@ -232,7 +237,9 @@ const { login } = loginHandler({
     if(user.role === 'user'){
       showUserDashBoard();
     }
-   
+    if(user.role === 'staff'){
+      // showUserDashBoard();
+    }
     
     // Optionally transition to dashboard
     // dashboard.style.display = "flex";

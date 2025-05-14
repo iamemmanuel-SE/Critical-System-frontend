@@ -907,6 +907,12 @@ outline-width: 1px;
       outline: none;
   }
 
+
+ #viewAccountHead  {
+background-color: #f5f6fa;
+color: #5e5e5e;
+ }
+  
   .NamesSup {
     display: flex;
     flex-direction: row;
