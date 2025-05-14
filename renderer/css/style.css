@@ -907,6 +907,9 @@ outline-width: 1px;
       outline: none;
   }
 
+  .viewAccountsTab{
+    display: none;
+  }
 
  #viewAccountHead  {
 background-color: #f5f6fa;
@@ -2308,6 +2311,15 @@ color: black;
   display: none;
 
 }
+
+#accountViewtrans {
+  padding-bottom: 10px ;
+}
+
+#withdrawForUserTab{
+display: none;
+}
+
 .currency-select {
   border: none;
   background: transparent;

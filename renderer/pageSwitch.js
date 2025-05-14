@@ -6,6 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const userDashBoard = document.getElementById("dashboard-wrapperUser");
   const dashboardWrapperStaff = document.getElementById("dashboard-wrapperStaff");
   const otpPage = document.getElementById("OtpPage");
+
+  //Staff DashBoard Toggles
+  const creditAccountButton = document.getElementById("creditAccountButton");
+  const viewAccountButton= document.getElementById("viewAccountButton");
+  const myWithdrawButton = document.getElementById("myWithdrawButton");
+
+
+
+
  
 
 

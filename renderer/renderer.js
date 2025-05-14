@@ -18,7 +18,7 @@ const heroSection = document.getElementById("hero-section");
 const userDashBoard = document.getElementById("dashboard-wrapperUser");
 const otpPage = document.getElementById("OtpPage");
 const VerifyEmailrecovPage = document.getElementById('VerifyEmailrecovPage');
-const dashboardWrapperStaff = getElementById('dashboard-wrapperStaff');
+const staffDashboard = document.getElementById('dashboard-wrapperStaff');
 // PAGE SECTION CALLS============================================================
 
 // SHOW DASHBOARD function (this func displays dashboard)===================================
@@ -29,7 +29,21 @@ function showUserDashBoard() {
   if (signupSection) signupSection.style.display = "none";
   if (otpPage) otpPage.style.display = "none";
   if (VerifyEmailrecovPage) VerifyEmailrecovPage.style.display = "none";
-  if (dashboardWrapperStaff) dashboardWrapperStaff.style.display="none"
+  if (staffDashboard) staffDashboard.style.display="none"
+  
+  // if (resetPasswordPage) resetPasswordPage.style.display = "none";
+ 
+}
+
+
+function showStaffDashboard() {
+  if (loginSection) loginSection.style.display = "none";
+  if (heroSection) heroSection.style.display = "none";
+  if (userDashBoard) userDashBoard.style.display = "none";
+  if (signupSection) signupSection.style.display = "none";
+  if (otpPage) otpPage.style.display = "none";
+  if (VerifyEmailrecovPage) VerifyEmailrecovPage.style.display = "none";
+  if (staffDashboard) staffDashboard.style.display="flex"
   
   // if (resetPasswordPage) resetPasswordPage.style.display = "none";
  
@@ -43,7 +57,7 @@ function showLoginSection() {
   if (signupSection) signupSection.style.display = "none";
   if (otpPage) otpPage.style.display = "none";
   if (VerifyEmailrecovPage) VerifyEmailrecovPage.style.display = "none";
-  if (dashboardWrapperStaff) dashboardWrapperStaff.style.display="none"
+  if (staffDashboard) staffDashboard.style.display="none"
 
   
  
@@ -56,7 +70,7 @@ function showOtpPage() {
   if (userDashBoard) userDashBoard.style.display = "none";
   if (signupSection) signupSection.style.display = "none";
   if (otpPage) otpPage.style.display = "flex";
-  if (dashboardWrapperStaff) dashboardWrapperStaff.style.display="none"
+  if (staffDashboard) staffDashboard.style.display="none"
   if (VerifyEmailrecovPage) VerifyEmailrecovPage.style.display = "none";
   console.log('I AM OTP AND I AM HEER')
 
@@ -238,7 +252,7 @@ const { login } = loginHandler({
       showUserDashBoard();
     }
     if(user.role === 'staff'){
-      // showUserDashBoard();
+      showStaffDashboard();
     }
     
     // Optionally transition to dashboard
