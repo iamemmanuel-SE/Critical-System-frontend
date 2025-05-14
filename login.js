@@ -12,7 +12,9 @@ export function loginHandler({ onLoadingChange, onErrorChange, onSuccess, locked
     try {
       const response = await fetch('http://localhost:4000/api/users/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json',
+          'x-forwarded-for': '194.66.175.89'
+         },
         body: JSON.stringify({ email, password })
       });
 

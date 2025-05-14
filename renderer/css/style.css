@@ -901,7 +901,12 @@ outline-width: 1px;
     box-sizing: border-box;
    
   }
-  
+
+  .viewAccountInForm input:focus {
+      border: none;
+      outline: none;
+  }
+
   .NamesSup {
     display: flex;
     flex-direction: row;
@@ -1131,6 +1136,10 @@ outline-width: 1px;
     align-items: center;
     overflow: hidden;
   }
+
+  #AcountDetails{
+    justify-content: start;
+  }
   
   .signup-right {
     flex: 1 1 50%;
@@ -1142,6 +1151,8 @@ outline-width: 1px;
     flex-direction: column;
   }
   
+
+
   #password, #firstName, #lastName, #email {
     background-color: #1c1c1c;
     border: none;
@@ -1424,6 +1435,43 @@ body {
   background: #222;
   border-radius: 10px;
   color: white;
+}
+
+.createAccount {
+  width: 100%;
+}
+.transactionHistoryTab{
+/* display: none; */
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.labelColor {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-style {
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+
+#headtrans{
+  padding: 10px;
+   background-color: rgba(29, 29, 29, 1);
+   width: 100%;
+   margin-bottom: 5px;
+}
+
+.accountDistance {
+  margin-bottom: 10px;
 }
 
 .signin-step.active {
@@ -2224,6 +2272,36 @@ color: black;
   margin-left: 12px;
 }
 
+.transMoney{
+  font-family: "inter", "sans-serif";
+  background-color: rgba(29, 29, 29, 1);
+  color: white;
+  padding: 18px;
+  /* border-bottom: 2px solid red; */
+  margin-bottom: 5px;
+ 
+}
+
+#transactionHisTab {
+  align-items: start;
+  display: none;
+}
+
+/* Turn of Signup write*/
+/* .signup-right {
+  display: none;
+} */
+#signUpTab{
+  display: none;
+}
+
+#withdrawTab {
+  /* display: none; */
+  font-family: "inter", "sans-serif";
+  color:#f9f9f9;
+  display: none;
+
+}
 .currency-select {
   border: none;
   background: transparent;
