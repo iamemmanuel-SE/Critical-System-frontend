@@ -35,7 +35,7 @@ export function signupHandler({ onLoadingChange, onErrorChange, onSuccess }) {
       alert("Signup successful! Please check your email to verify your account. Once verified, return to the login page to access your account.");
 
     } catch (err) {
-      console.error("Fetch error:", err);
+      console.error("Fetch error:", err); 
       isLoading = false;
       error = 'Network error';
       onLoadingChange(isLoading);

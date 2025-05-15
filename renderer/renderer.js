@@ -7,7 +7,7 @@ import { resetPasswordHandler } from "./resetPass.js";
 const signupForm = document.getElementById("signupForm");
 const signinForm = document.getElementById("signinForm")
 const spinnerOverlay = document.getElementById("spinnerOverlay"); // Optional loading spinner
-const dashboard = document.getElementById("dashboard");
+// const dashboard = document.getElementById("dashboard");
 const recoveForm = document.getElementById("RecoveForm");
 
 

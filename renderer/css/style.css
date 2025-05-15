@@ -1241,6 +1241,7 @@ color: #5e5e5e;
     gap: 1rem;
   }
 
+
   .step {
     display: flex;
     align-items: center;
@@ -1248,6 +1249,11 @@ color: #5e5e5e;
     padding: 1rem;
     background: #222;
     border-radius: 10px;
+  }
+
+  .step:hover {
+    cursor: pointer;
+
   }
 
   .step.active {
@@ -1259,6 +1265,40 @@ color: #5e5e5e;
     width: 24px;
     height: 24px;
   }
+
+  .steps .step {
+    background-color: #1c1c1c;
+    color: #fff;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: default;
+  }
+  
+  .steps .step img {
+    /* ensure the icon also transitions */
+    filter: invert(100%);
+    transition: filter 0.2s ease;
+  }
+  
+  /* hover state */
+  .steps .step:hover {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .steps .step:hover img {
+    /* remove invert so icon becomes dark */
+    filter: invert(0%);
+  }
+  
+
+  #creditAccountButton #viewAccountButton #withdrawButton:hover{
+    background-color: rgb(175, 0, 0);
+    color: black;
+    cursor: pointer;
+  }
+
+
 
   .signup-right {
     background: black;
@@ -2309,6 +2349,10 @@ color: black;
   font-family: "inter", "sans-serif";
   color:#f9f9f9;
   display: none;
+
+}
+
+#creditAccountButton #viewAccountButton #withdrawButton:hover {
 
 }
 
