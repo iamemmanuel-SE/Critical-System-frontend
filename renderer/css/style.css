@@ -901,6 +901,9 @@ outline-width: 1px;
     box-sizing: border-box;
    
   }
+  #viewAccountInForm{
+    width: 100%;
+  }
 
   .viewAccountInForm input:focus {
       border: none;
@@ -1147,7 +1150,7 @@ color: #5e5e5e;
   }
 
   #AcountDetails{
-    justify-content: start;
+    justify-content: center;
   }
   
   .signup-right {
@@ -1489,9 +1492,9 @@ body {
 .createAccount {
   width: 100%;
 }
-.transactionHistoryTab{
-/* display: none; */
-}
+/* .transactionHistoryTab{
+
+} */
 
 .form-group {
   margin-bottom: 20px;

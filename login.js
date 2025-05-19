@@ -20,7 +20,7 @@ export function loginHandler({ onLoadingChange, onErrorChange, onSuccess, locked
 
       const json = await response.json();
 
-      //Check=========================
+      //Check============================================================================================
       // ==================================================
       if(json.lockLoginTimer)
         {
@@ -33,7 +33,7 @@ export function loginHandler({ onLoadingChange, onErrorChange, onSuccess, locked
 
             }
             isLoading = false;
-            error = json.error || 'System is locked. Too many failed login attempts, try again after'+json.loginLockUntil;
+            error = json.error || 'System is temporarily locked. Too many login attempts, try again after'+json.loginLockUntil;
 
             onLoadingChange(isLoading);
             onErrorChange(error);
@@ -56,7 +56,7 @@ export function loginHandler({ onLoadingChange, onErrorChange, onSuccess, locked
         onLoadingChange(isLoading);
 
         // Show message to user - simple browser alert for now
-        alert("Your email is not verified. Please check your inbox and verify your email before logging in.");
+        alert("Your email not verified. Kindly check email to verify before logging in.");
         return;
       }
 
@@ -66,6 +66,7 @@ export function loginHandler({ onLoadingChange, onErrorChange, onSuccess, locked
       onSuccess(json);
 
     } catch (err) {
+      console.log(err)
       isLoading = false;
       error = 'Network error';
       onLoadingChange(isLoading);

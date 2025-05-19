@@ -216,6 +216,10 @@ function showRecoverPage() {
   if (otpPage) otpPage.style.display = "none";
   if (viewAccountsTab) viewAccountsTab.style.display = "none";
   if (withdrawForUserTab ) withdrawForUserTab .style.display = "none";
+
+  if(userTransactionHisTab) userTransactionHisTab.style.display = "none";
+  if(userWithdrawTab) userWithdrawTab.style.display = "none";
+  if(userAcountDetailsTab) userAcountDetailsTab.style.display = "none";
   
 
 });

@@ -3,12 +3,21 @@ import { signupHandler } from "./signup.js";
 import { loginHandler } from "../login.js";
 import { sendRecoveryEmailHandler } from "./forgotPassHandler.js";
 import { resetPasswordHandler } from "./resetPass.js";
+import { createAccountHandler } from "./accountCreationHandler.js";
+import { fetchMyAccount, populateAccountForm } from './populators/accDetailsPopulate.js';
+import { withdrawHandler } from "./userWithdrawal.js";
+import { setCreateBtnActive } from './populators/accDetailsPopulate.js';
+
+// import { checkAndPopulateUserAccount } from "./accountUtils.js";
+
 
 const signupForm = document.getElementById("signupForm");
 const signinForm = document.getElementById("signinForm")
 const spinnerOverlay = document.getElementById("spinnerOverlay"); // Optional loading spinner
 // const dashboard = document.getElementById("dashboard");
 const recoveForm = document.getElementById("RecoveForm");
+const accountForm = document.getElementById("AccountForm");
+const withdForm = document.getElementById('WithdForm');
 
 
 // PAGE SECTION CALLS============================================================
@@ -101,6 +110,48 @@ const { resetPassword } = resetPasswordHandler({
 // Get Unlocked=====================================================================
 
 
+// Handle User Account Creation=====================================================
+const { createAccount } = createAccountHandler({
+     onLoadingChange: (isLoading)=>{
+      if (spinnerOverlay) spinnerOverlay.style.display = isLoading ? "flex" : "none";
+
+     },
+     onErrorChange: (err)=>{
+     console.log(err)
+
+     },
+     onSuccess: (user)=>{
+      console.log(user)
+      populateAccountForm(user);
+
+      setCreateBtnActive(false);
+      alert(`Account created Succesfully. Kindly confirm from your email ${user.email}`);
+
+     }
+     
+       
+    })
+
+    //Create Account Trigger
+    accountForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const accountName = accountForm.querySelector('input[name = "accountName"]').value.trim();
+      const idNumber = accountForm.querySelector('input[name="idNumber"]').value.trim();
+      const address = accountForm.querySelector('input[name = "address"]').value.trim();
+      const pin = accountForm.querySelector('input[name="pin"]').value.trim();
+      if(!accountName||!idNumber||!address||!pin)
+      {
+        alert("Fill in all Fields to")
+ 
+      }
+      else{
+        
+        createAccount(accountName, idNumber, address, pin);
+      }
+ 
+      accountForm.reset();
+    })
+
 //
 // Get Reset details to Handler
 const resetPasswordForm = document.getElementById("OtpVerifyForm");
@@ -123,10 +174,87 @@ if (resetPasswordForm) {
 }
 
 
-// SHOW DASHBOARD function (this func displays dasboard)====================================
+// WITHDRAWAL HANDLER START================================================================================
+const { withdrawFunction } = withdrawHandler({
+             onLoadingChange: (isLoading)=>{
+              if (spinnerOverlay) spinnerOverlay.style.display = isLoading ? "flex" : "none";
+
+             },
+             onErrorChange: (error)=>{
+              if (!error) return;
+              //  if(error)
+              //  {
+              //   withdrawalMessage.style.display = "block";
+              //   withdrawalMessage.style.color = "red";
+              //   withdrawalMessage.style.borderTop = "4px solid red";
+              //   withdrawalMessage.textContent = error || '';
+              //   withdrawalMessage.style.display = "block";
+              //  }
+              // console.log(error)
+                alert(error);
+             },
+             onLock: (withdrawalLockUntil)=>{
+              const lockUntil = new Date(withdrawalLockUntil).getTime();
+              const now = new Date().getTime();
+              console.log(lockUntil);
+              console.log(now);
+            
+               if (lockUntil > now) {
+                console.log("This is lockUntil", lockUntil);
+                const overlay = document.getElementById("signup-lock-overlay");
+                const countdownText = document.getElementById("signup-countdown-text");
+                     overlay.style.display = "flex";
+  
+                  withdrawalForm.querySelector('button[type="submit"]').disabled = true;
+            
+                const countdownInterval = setInterval(() => {
+                  const timeLeft = lockUntil - new Date().getTime();
+                  
+            
+                   if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    overlay.style.display = "none";
+                    withdrawalForm.querySelector('button[type="submit"]').disabled = false;
+                  } else {
+                    const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
+                    const seconds = Math.floor((timeLeft / 1000) % 60);
+                    countdownText.innerText = `Withdrawal page locked. Please wait ${minutes}m ${seconds}s.`;
+                    withdrawalMessage.style.display = "none";
+                  } 
+                }, 1000);
+              }  
+             },
+             onSuccess: (json)=>{
+              console.log(json)
+              alert("Transaction was successful.")
+              showCustomAlert("Transaction was successful.");
+             }
 
 
-// SHOW DASHBOARD function (this func displays dasboard)====================================
+      });
+      //CAPTURE WITHDRAWAL INPUTS
+     
+      withdForm.addEventListener('submit',(e)=>{
+        e.preventDefault();
+      const userWithdrawAmount = document.getElementById('userWithdrawAmount').value.trim();
+      const pin = document.getElementById('pin').value.trim();
+        
+        // const pinField = withdForm.querySelector('input[name="pin"]');
+        // const withdrawalAmountField = withdrawalForm.querySelector('input[name="amount"]');
+        // pin = pinField.value.trim();
+        // userWithdrawAmount = withdrawalAmount.value.trim();
+        withdrawFunction(userWithdrawAmount,pin);
+
+        withdForm.reset();
+
+    })
+
+//HANDLE DEPOSIT================================================================================
+
+
+
+//WITHDRAWAL HANDLER FINISH====================================================================================
+
 
 // const allPageDisplay = Array.from(document.getElementsByClassName("allPages"));
 // allPageDisplay.forEach(page => {
@@ -181,14 +309,6 @@ const { sendRecoveryEmail } = sendRecoveryEmailHandler({
     console.log("Recovery email sent:", response);
     alert("Recovery email sent successfully! Please check your inbox.");
 
-    // the the display page function
-
-    // Optional: redirect to verification page or login
-    // if (resetPasswordPage) {
-    //   resetPasswordPage.style.display = "flex";
-    //   loginSection.style.display = "none";
-    //   heroSection.style.display = "none";
-    // }
   }
 });
 
@@ -246,19 +366,23 @@ const { login } = loginHandler({
   onErrorChange: (err) => {
     if (err) alert(`Signin Error: ${err}`);
   },
-  onSuccess: (user) => {
+  onSuccess: async (user) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    console.log("user STORED AS", JSON.stringify(user))
+    //Run populator
+    
+    await fetchMyAccount(user);
+
     console.log(user);
     if(user.role === 'user'){
+
       showUserDashBoard();
     }
     if(user.role === 'staff'){
       showStaffDashboard();
     }
     
-    // Optionally transition to dashboard
-    // dashboard.style.display = "flex";
-    // document.querySelector(".form_container").style.display = "none";
-    // document.querySelector(".home").classList.remove("show");
+    // 
   },
   locked: (lockLoginTimer => {
     console.log(lockLoginTimer)
@@ -298,8 +422,7 @@ signinForm.addEventListener("submit", (e) => {
   console.log('Sign In Button Pressed, heooo use in')
  
   
-  // const firstName = document.getElementById("firstName").value.trim();
-  // const lastName = document.getElementById("lastName").value.trim();
+
   const email = document.getElementById("signin-email").value.trim();
   const password = document.getElementById("signin-password").value.trim();
   // const role = document.getElementById("role").value;

@@ -10,7 +10,7 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://criticalbankbackend-4a0be9a2198b.herokuapp.com/ http://localhost http://localhost:4000 http://127.0.0.1;"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://optimalbank-e8c4475af142.herokuapp.com/ http://localhost http://localhost:4000 http://127.0.0.1;"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -220,7 +220,7 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
 <!-- USER DASHBOARD=================================================================================================== -->
 <section class="signup-wrapper allPages" id="dashboard-wrapperUser">
   <div class="signup-left">
-    <img src="assets/" alt="Background" class="bg-image" />
+    <!-- <img src="assets/" alt="Background" class="bg-image" /> -->
     <div class="left-content">
       <div class="brand">
         <img src="assets/logo.png" alt="Icon" class="brand-icon" />
@@ -242,7 +242,7 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
           <span>Widthdraw</span>
         </div>
         <div class="step" id="accountDetailsButtons">
-          <img src="assets/4.png" alt="Step 3" />
+          <img src="assets/4.png" alt="Step 4" />
           <span>Account Details</span>
         </div>
       </div>
@@ -260,31 +260,26 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
     
       <div class="form-group">
         <label for="email" class="labelColor accountDistance">Account Name</label>
-        <input id="email" name="accountName" type="text" placeholder="e.g. Ben3@1" />
+        <input id="email" name="accountName" type="text" placeholder="e.g. Ben3@1" required/>
       </div>
 
       <div class="form-group">
         <label for="role" class="labelColor accountDistance">Create pin</label>
-        <input id="password" name="pin" type="password number" placeholder="12344..." />
+        <input id="password" name="pin" type="password" placeholder="12344..." required/>
       </div>
     
       <div class="form-group">
         <label for="password" class="labelColor accountDistance">Id-number</label>
-        <input id="password" name="password" type="text" placeholder="Drivers/Nationality/etc" />
+        <input id="password" name="idNumber" type="text" placeholder="Drivers/Nationality/etc" required/>
       </div>
 
       <div class="form-group">
         <label for="password" class="labelColor accountDistance">Address</label>
-        <input id="password" name="password" type="text" placeholder="e.g ST3..." />
-      </div>
-
-      <div class="form-group">
-        <label for="password" class="labelColor accountDistance">Tel number</label>
-        <input id="password" name="password" type="number" placeholder="07538287549" />
+        <input id="password" name="address" type="text" placeholder="e.g ST3..." required/>
       </div>
     
       <!-- <small>Must be at least 8 characters.</small> -->
-      <button type="submit">Create</button>
+      <button id="createAccBut" type="submit" disabled>Create</button>
     </form>
 
       
@@ -323,17 +318,17 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
   
     <div class="form-group">
       <label for="email" class="labelColor accountDistance">Amount</label>
-      <input id="WithdrawiD" name="WithdrawAmount" type="number" placeholder="$2000" />
+      <input id="userWithdrawAmount" name="WithdrawAmount" type="number" placeholder="$2000" />
     </div>
 
     <div class="form-group">
   <label for="account" class="labelColor accountDistance">Account</label>
-  <input id="password" name="password" type="text" placeholder="Enter account number ..." />
+  <input id="userAccountNumber" name="password" type="text" placeholder="Enter account number ..." />
     </div>
 
     <div class="form-group">
       <label for="password" class="labelColor accountDistance">Pin</label>
-      <input id="password" name="password" type="text" placeholder="Enter Pin" />
+      <input id="pin" name="password" type="text" placeholder="Enter Pin" />
     </div>
   
     <small class="signin-small">
@@ -353,7 +348,36 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
 
   <!-- SignUp form======================================-->
   <form id="viewAccountInForm">
-    <div class="form-row">
+    <div class="form-group">
+      <label for="email" class="labelColor accountDistance">Account Name</label>
+      <input id="accountName" name="accountName" type="text" placeholder="e.g. Ben3@1" required readonly/>
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="labelColor accountDistance">Account Number</label>
+      <input id="accountNumber" name="accounNum" type="text" placeholder="10323343.." readonly />
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="labelColor accountDistance">Id-number</label>
+      <input id="accIdNumber" name="idNumber" type="text" placeholder="Drivers/Nationality/etc" required readonly/>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="labelColor accountDistance">User Name</label>
+      <input id="userName" name="userName" type="text" placeholder="e.g.Thomas Sankara" required readonly/>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="labelColor">Email Address</label>
+      <input id="accEmail" name="email" type="email" placeholder="e.g. johnfrance@gmail.com" readonly/>
+    </div>
+    <!-- <div class="transMoney" style="display: flex; flex-direction: row; justify-content: space-between;" id="viewAccountHead">
+      <p class="Name">Account Balance</p>
+      <p class="Account Number">$9000</p>
+    </div> -->
+
+    <!-- <div class="form-row">
       <div class="form-group">
         <label for="firstName" class="labelColor">First Name</label>
         <input id="firstName" name="firstName" type="text" placeholder="e.g. John" readonly/>
@@ -362,35 +386,10 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
         <label for="lastName" class="labelColor">Last Name</label>
         <input id="lastName" name="lastName" type="text" placeholder="e.g. Francisco" readonly/>
       </div>
-    </div>
+    </div> -->
   
-    <div class="form-group">
-      <label for="email" class="labelColor">Email Address</label>
-      <input id="email" name="email" type="email" placeholder="e.g. johnfrance@gmail.com" readonly/>
-    </div>
+ 
 
-
-    <div class="form-group">
-      <label for="password" class="labelColor accountDistance">Id-number</label>
-      <input id="password" name="password" type="text" placeholder="Drivers/Nationality/etc" readonly />
-    </div>
-
-    <div class="form-group">
-      <label for="password" class="labelColor accountDistance">Account Number</label>
-      <input id="password" name="accounNum" type="text" placeholder="Drivers/Nationality/etc" readonly />
-    </div>
-
-    <div class="form-group">
-      <label for="password" class="labelColor accountDistance">Address</label>
-      <input id="password" name="password" type="text" placeholder="e.g ST3..." readonly/>
-    </div>
-
-    <div class="form-group">
-      <label for="password" class="labelColor accountDistance">Tel number</label>
-      <input id="password" name="password" type="number" placeholder="07538287549" readonly/>
-    </div>
-
-   
 
   </form>
 </div>
@@ -454,12 +453,12 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
     
       <div class="form-group">
         <label for="email" class="labelColor accountDistance">Account Number</label>
-        <input id="email" name="accountName" type="text" placeholder="00170100034..." />
+        <input id="accNumber" name="accountName" type="text" placeholder="00170100034..." required/>
       </div>
 
       <div class="form-group">
         <label for="money" class="labelColor accountDistance">Amount</label>
-        <input id="password" name="amount" type="number" placeholder="$34000" />
+        <input id="password" name="amount" type="number" placeholder="$34000" required/>
       </div>
 
       <button type="submit">Credit Account</button>
@@ -479,14 +478,12 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
         <div class="transMoney" style="display: flex; flex-direction: row; justify-content: space-between;" id="viewAccountHead">
           <p class="Name">Full name</p>
           <p class="Name">Email</p>
-          <p class="Name">Tel</p>
           <p class="Account Number">Account No</p>
         </div>
 
         <!-- <div class="transMoney" style="display: flex; flex-direction: row; justify-content: space-between;">
           <p class="Name">hbjhb</p>
           <p class="Name">Email</p>
-          <p class="Name">0979l</p>
           <p class="Account Number">00232323</p>
 
         </div> -->
