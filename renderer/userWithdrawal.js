@@ -73,7 +73,7 @@ export function withdrawHandler({ onLoadingChange, onLock, onErrorChange, onSucc
             })
             .then(response => {
               return response.json().then(json => {
-                if(json.withdrawalLockUntil && new Date(json.loginLockUntil) > new Date())
+                if(json.withdrawalLockUntil && new Date(json.withdrawalLockUntil) > new Date())
                   {
                       try{
                       
@@ -84,8 +84,10 @@ export function withdrawHandler({ onLoadingChange, onLock, onErrorChange, onSucc
                         console.error("Error in onLock:", error);
           
                       }
+                      localStorage.setItem("withdrawalLockUntil", json.withdrawalLockUntil);
+
                       isLoading = false;
-                      error = 'System is locked. Too many failed withdrawal attempts, try again after'+json.withdrawalLockUntil;
+                      error = 'Too many failed withdrawal attempts. Try again after'+json.withdrawalLockUntil;
           
                       onLoadingChange(isLoading);
                       onErrorChange(error);

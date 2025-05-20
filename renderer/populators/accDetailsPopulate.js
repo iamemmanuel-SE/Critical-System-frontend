@@ -28,6 +28,8 @@ export function populateAccountForm(account) {
   // Make sure the form is visible
   const form = document.getElementById('AccountForm');
   if (form) form.style.display = 'block';
+
+  
 }
 
 /**

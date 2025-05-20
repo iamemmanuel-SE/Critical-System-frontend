@@ -29,7 +29,10 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
       <!-- Lock Overlay===================================== -->
       <div id="signup-Screen-LockID" class="signupScreenLock ">
         <p id="signupTimer"></p>
-        
+      </div>
+
+      <div id="trans-Screen-LockID" class="signupScreenLock " style="display: none;">
+        <p id="transLockTimer" style="color: white; font-size: 20px;"></p>
       </div>
       <div class="PageWrapper">
     
@@ -45,9 +48,14 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
             <div class="LoginDiv">
               <div class="CTAs">
                 <div class="Box to-login" >
-                  <a href="#" class="signInNavLink">Sign in</a>
+                  <a id="signInBut" class="signInNavLink">Sign in</a>
                 </div>
               </div>
+              <!-- <div class="CTAs">
+                <div class="Box to-login" >
+                  <a id="signInBut" class="signInNavLink">Sign out</a>
+                </div>
+              </div> -->
               <p>Already have an account?</p>
             </div>
           </div>
@@ -220,6 +228,7 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
 <!-- USER DASHBOARD=================================================================================================== -->
 <section class="signup-wrapper allPages" id="dashboard-wrapperUser">
   <div class="signup-left">
+    <h1 id="Balance"></h1>
     <!-- <img src="assets/" alt="Background" class="bg-image" /> -->
     <div class="left-content">
       <div class="brand">
@@ -328,7 +337,7 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
 
     <div class="form-group">
       <label for="password" class="labelColor accountDistance">Pin</label>
-      <input id="pin" name="password" type="text" placeholder="Enter Pin" />
+      <input id="pin" name="password" type="password" placeholder="Enter Pin" />
     </div>
   
     <small class="signin-small">
@@ -417,7 +426,7 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
 <!-- STAFF DASHBOARD=================================================================================================== -->
 <section class="signup-wrapper allPages" id="dashboard-wrapperStaff">
   <div class="signup-left">
-    <img src="assets/" alt="Background" class="bg-image" />
+    <!-- <img src="assets/" alt="Background" class="bg-image" /> -->
     <div class="left-content">
       <div class="brand">
         <img src="assets/logo.png" alt="Icon" class="brand-icon" />
@@ -449,7 +458,7 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
 
   
     <!--Credit Account Right Side ================================================================================-->
-    <form id="AccountForm" class="createAccount">
+    <form id="creditAccForm" class="createAccount">
     
       <div class="form-group">
         <label for="email" class="labelColor accountDistance">Account Number</label>
@@ -458,7 +467,7 @@ data-ws-last-published="2025-04-23T06:36:31.761Z"
 
       <div class="form-group">
         <label for="money" class="labelColor accountDistance">Amount</label>
-        <input id="password" name="amount" type="number" placeholder="$34000" required/>
+        <input id="creditAmount" name="credAmount" type="number" placeholder="&pound;34000" required/>
       </div>
 
       <button type="submit">Credit Account</button>

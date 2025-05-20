@@ -1152,6 +1152,13 @@ color: #5e5e5e;
   #AcountDetails{
     justify-content: center;
   }
+
+  #Balance{
+    font-family: 'sans-serif', 'inter';
+    font-weight: 600;
+    font-size: xx-large;
+    margin-bottom: 50px;
+  }
   
   .signup-right {
     flex: 1 1 50%;

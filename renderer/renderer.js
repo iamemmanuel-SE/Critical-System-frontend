@@ -7,6 +7,8 @@ import { createAccountHandler } from "./accountCreationHandler.js";
 import { fetchMyAccount, populateAccountForm } from './populators/accDetailsPopulate.js';
 import { withdrawHandler } from "./userWithdrawal.js";
 import { setCreateBtnActive } from './populators/accDetailsPopulate.js';
+import { depositHandler } from "./depositMonHandler.js";
+
 
 // import { checkAndPopulateUserAccount } from "./accountUtils.js";
 
@@ -19,6 +21,13 @@ const recoveForm = document.getElementById("RecoveForm");
 const accountForm = document.getElementById("AccountForm");
 const withdForm = document.getElementById('WithdForm');
 
+//bALANCE uPDATER==================
+function updateBalanceUI(balance) {
+const numericBalance = parseFloat(balance?.$numberDecimal || balance || "0.0");
+document.getElementById("Balance").textContent = `£${numericBalance.toFixed(2)}`;
+}
+
+
 
 // PAGE SECTION CALLS============================================================
 const signupSection = document.getElementById("signup-section");
@@ -28,6 +37,9 @@ const userDashBoard = document.getElementById("dashboard-wrapperUser");
 const otpPage = document.getElementById("OtpPage");
 const VerifyEmailrecovPage = document.getElementById('VerifyEmailrecovPage');
 const staffDashboard = document.getElementById('dashboard-wrapperStaff');
+
+//USER BALANCE=========================
+// const userBalance = document.getElementById('Balance')
 // PAGE SECTION CALLS============================================================
 
 // SHOW DASHBOARD function (this func displays dashboard)===================================
@@ -123,6 +135,10 @@ const { createAccount } = createAccountHandler({
      onSuccess: (user)=>{
       console.log(user)
       populateAccountForm(user);
+      //call update
+      updateBalanceUI(user.balance);
+
+
 
       setCreateBtnActive(false);
       alert(`Account created Succesfully. Kindly confirm from your email ${user.email}`);
@@ -182,7 +198,6 @@ const { withdrawFunction } = withdrawHandler({
              },
              onErrorChange: (error)=>{
               if (!error) return;
-              //  if(error)
               //  {
               //   withdrawalMessage.style.display = "block";
               //   withdrawalMessage.style.color = "red";
@@ -193,6 +208,7 @@ const { withdrawFunction } = withdrawHandler({
               // console.log(error)
                 alert(error);
              },
+             
              onLock: (withdrawalLockUntil)=>{
               const lockUntil = new Date(withdrawalLockUntil).getTime();
               const now = new Date().getTime();
@@ -201,20 +217,21 @@ const { withdrawFunction } = withdrawHandler({
             
                if (lockUntil > now) {
                 console.log("This is lockUntil", lockUntil);
-                const overlay = document.getElementById("signup-lock-overlay");
-                const countdownText = document.getElementById("signup-countdown-text");
+                const overlay = document.getElementById("signup-Screen-LockID");//signup-Screen-LockID
+                const countdownText = document.getElementById("signupTimer");//signupTimer
                      overlay.style.display = "flex";
   
-                  withdrawalForm.querySelector('button[type="submit"]').disabled = true;
+                  withdForm.querySelector('button[type="submit"]').disabled = true;
             
                 const countdownInterval = setInterval(() => {
                   const timeLeft = lockUntil - new Date().getTime();
+                  // const timeLeft = lockUntil - Date().now();
                   
             
                    if (timeLeft <= 0) {
                     clearInterval(countdownInterval);
                     overlay.style.display = "none";
-                    withdrawalForm.querySelector('button[type="submit"]').disabled = false;
+                    withdForm.querySelector('button[type="submit"]').disabled = false;
                   } else {
                     const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
                     const seconds = Math.floor((timeLeft / 1000) % 60);
@@ -227,7 +244,10 @@ const { withdrawFunction } = withdrawHandler({
              onSuccess: (json)=>{
               console.log(json)
               alert("Transaction was successful.")
-              showCustomAlert("Transaction was successful.");
+              updateBalanceUI(json.balance);
+              // userBalance.value = json.balance;
+              // console.log(userBalance.value)
+              // showCulert("Transaction was successful.");
              }
 
 
@@ -239,18 +259,58 @@ const { withdrawFunction } = withdrawHandler({
       const userWithdrawAmount = document.getElementById('userWithdrawAmount').value.trim();
       const pin = document.getElementById('pin').value.trim();
         
-        // const pinField = withdForm.querySelector('input[name="pin"]');
-        // const withdrawalAmountField = withdrawalForm.querySelector('input[name="amount"]');
-        // pin = pinField.value.trim();
-        // userWithdrawAmount = withdrawalAmount.value.trim();
+      const lockUntil = localStorage.getItem("withdrawalLockUntil");
+      if (lockUntil && new Date(lockUntil) > new Date()) {
+        const timeLeft = new Date(lockUntil).getTime() - Date.now();
+        const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
+        const seconds = Math.floor((timeLeft / 1000) % 60);
+        alert(`Withdrawals locked. Try again in ${minutes}m ${seconds}s.`);
+        return;
+      }
+
+
         withdrawFunction(userWithdrawAmount,pin);
 
         withdForm.reset();
 
     })
 
-//HANDLE DEPOSIT================================================================================
+      //HANDLE DEPOSIT================================================================================
+       const creditAccountForm = document.getElementById('creditAccForm');
 
+       creditAccountForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+
+        const accountNumber = document.getElementById('accNumber').value.trim();
+        const creditAmount = document.getElementById('creditAmount').value.trim();
+
+        //do deposit handler in here
+        const { deposit } = depositHandler({
+            onLoadingChange: (isLoading)=>{
+              if (spinnerOverlay) spinnerOverlay.style.display = isLoading ? 'flex' : 'none';
+
+            },
+            onErrorChange: (err)=>{
+              console.log(err)
+            },
+            onSuccess: (account)=>{
+              console.log(account)
+             
+              //Update balance onsucces
+              // const rawBalance = account.balance?.$numberDecimal || "0.00";
+              //   const balance = parseFloat(rawBalance);
+              //   document.getElementById("Balance").textContent = `£${balance.toFixed(2)}`;
+
+              alert("Success", "Transaction was successful.");
+              // depositAmountInput.value = "";
+             
+            }
+        })
+        //Get amount Value
+        deposit(accountNumber, creditAmount);
+        
+          creditAccountForm.reset();  
+       })
 
 
 //WITHDRAWAL HANDLER FINISH====================================================================================
@@ -371,7 +431,20 @@ const { login } = loginHandler({
     console.log("user STORED AS", JSON.stringify(user))
     //Run populator
     
-    await fetchMyAccount(user);
+
+    //Fecth with balance=============
+
+      // 👇 fetch account with balance
+  const account = await fetchMyAccount(user);
+
+  if (account && account.balance) {
+    // Convert Decimal128 to float string
+    const balance = parseFloat(account.balance.$numberDecimal || "0.0");
+    
+    // Optional: show in UI
+    document.getElementById("Balance").textContent = `£${balance.toFixed(2)}`;
+
+  }
 
     console.log(user);
     if(user.role === 'user'){
@@ -404,7 +477,7 @@ const { login } = loginHandler({
           
                  if (timeLeft <= 0) {
                   clearInterval(countdownInterval);
-                  overlay.style.display = "none";
+                  signupScreenLockID.style.display = "none";
                   // loginForm.querySelector('button[type="submit"]').disabled = false;
                 } else {
                   const minutes = Math.floor((timeLeft / 1000 / 60) % 60);

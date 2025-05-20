@@ -6,9 +6,9 @@ export function loginHandler({ onLoadingChange, onErrorChange, onSuccess, locked
     // Set loading to true and clear previous errors
     isLoading = true;
     error = null;
-    onLoadingChange(isLoading);
+    onLoadingChange(isLoading); 
     onErrorChange(null);
-
+                                                                                                                                         
     try {
       const response = await fetch('http://localhost:4000/api/users/login', {
         method: 'POST',
@@ -66,7 +66,6 @@ export function loginHandler({ onLoadingChange, onErrorChange, onSuccess, locked
       onSuccess(json);
 
     } catch (err) {
-      console.log(err)
       isLoading = false;
       error = 'Network error';
       onLoadingChange(isLoading);
